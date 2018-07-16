@@ -9,7 +9,8 @@ const URL = `/naldeportivo`;
 // MODELS
 require('./models/models')(wagner);
 
-const attender = require('./router/attender.router.js')(wagner);
+const user = require('./router/user.router.js')(wagner);
+const noticia = require('./router/noticia.router.js')(wagner);
 
 let app = express();
 
@@ -27,9 +28,10 @@ app.use(function (req, res, next) {
 
 // ROUTERS
 
-const v = 'v1';
-const uri = `${URL}/${v}/`;
+const uri = `/usuarios/v1/`;
+const not = `/noticias/v1/`;
 
-app.use(uri+'attender', attender);
+app.use(uri+'usuario', user);
+app.use(not+'noticia', noticia);
 
 module.exports = app;
